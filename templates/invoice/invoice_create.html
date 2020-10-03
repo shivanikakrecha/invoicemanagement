@@ -9,10 +9,13 @@
 			{% csrf_token %}
 			<div class="row">
 			    <div class="col-6">		
-			    	<h3>Create Invoice</h3>	  	
+			    	<h3>Create Invoice</h3>	  
+
 			  	    {{form.as_p}}
 			    </div>	
-			    <div class="col-6 canvas-resize">
+			    
+			<input type="submit" class="fadeIn fourth" value="Submit" id="submit-button-pos"> 
+			<div class="col-6 canvas-resize">
 
 			    	<h3>Invoice Attachment Preview</h3>
 
@@ -23,7 +26,6 @@
 				    <canvas id="the-canvas"></canvas>
 			    </div>
 			</div>
-			<input type="submit" class="fadeIn fourth" value="Submit" id="submit-button-pos"> 
 			
 		</form>
 	</div>

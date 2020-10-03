@@ -12,14 +12,23 @@ class TimeStamps(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-class Item(TimeStamps, models.Model):
+class RawItem(models.Model):
     name = models.CharField(max_length=255)
-    quantity = models.IntegerField(default=0)
     price = models.FloatField(default=0.0)
     description = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.name
+
+
+class Item(TimeStamps, models.Model):
+    raw_item = models.ForeignKey(
+        RawItem, on_delete=models.CASCADE, null=True, blank=True)
+    quantity = models.IntegerField(default=0)
+    price = models.FloatField(default=0.0)
+
+    def __str__(self):
+        return self.raw_item.name
 
 
 class Invoice(TimeStamps, models.Model):
@@ -31,7 +40,7 @@ class Invoice(TimeStamps, models.Model):
                                   validators=[validate_file_attachment, ])
     items = models.ManyToManyField(Item, null=True, blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.invoice_number
 
     def save(self, **kwargs):

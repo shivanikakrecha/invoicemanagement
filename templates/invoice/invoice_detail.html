@@ -4,21 +4,33 @@
 {% block content %}
 
 <div class="invoice_create">
-		
-			<div class="row">
-			    <div class="col-6">		
-			    	<h3>Create Invoice</h3>	  	
-			  	    <label>Invoice Number</label>
-			  	    <input type="text" value="{{ invoice.invoice_number }}" required>
-			  	</div>
-			</div>
-			<div class='row'>
-			  	<div class="col-6">
-			  	    <label>created_by</label>
-			  	    <input type="text" value="{{ invoice.created_by.get_full_name }}" required>
-			    </div>
-			</div>
-			
-	</div>
+
+	<h2> Invoice Detail</h2> 
+	<button><a href="{% url 'invoice:invoice_list' %}">Back To Dashboard</a></button>
+	<table class="table table-striped">
+	  
+	    <tbody>
+
+    		<tr>
+    			<td>invoice number</td>
+		        <td><a href="{% url 'invoice:invoice_detail' invoice.id %}">{{ invoice.invoice_number }}</a></td>
+		    </tr>
+		    <tr>
+		    	<td> Vendor Name </td>
+		        <td>{{ invoice.vendor_name }}</td>
+		    </tr>
+		    <tr>
+		    	<td> Attachment </td>
+		        <td><a href="{{invoice.attachment.url }}" target="blank">Link</a></td>
+		    </tr>
+		    <tr>
+		    	<td> Items </td>
+		        <td>{{ invoice.items }}</td>
+		    </tr>
+	      
+	    </tbody>
+	  </table>	
+
+</div>
 
 {% endblock %}
