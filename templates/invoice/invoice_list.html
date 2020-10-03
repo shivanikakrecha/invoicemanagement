@@ -19,7 +19,7 @@
 
 	    	{% for invoice in invoices %}
 	    		<tr>
-			        <td>{{ invoice.invoice_number }}</td>
+			        <td><a href="{% url 'invoice:invoice_detail' invoice.id %}">{{ invoice.invoice_number }}</a></td>
 			        <td>{{ invoice.vendor_name }}</td>
 			        <td>Attachment</td>
 			        <td>{{ invoice.items }}</td>

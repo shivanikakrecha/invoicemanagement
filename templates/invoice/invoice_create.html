@@ -3,6 +3,7 @@
 
 {% block content %}
 	<div class="invoice_create">
+		
 		<form  method="POST" id='invoice-create-form' action="{% url 'invoice:invoice_create' %}" enctype="multipart/form-data">
 
 			{% csrf_token %}
@@ -11,29 +12,18 @@
 			    	<h3>Create Invoice</h3>	  	
 			  	    {{form.as_p}}
 			    </div>	
-			    <div class="col-6">
+			    <div class="col-6 canvas-resize">
 
-			    	<h3>Invoice Preview</h3>
+			    	<h3>Invoice Attachment Preview</h3>
 
-			    	<label>Invoice Number</label>
-			    	<input type="text" name="" value='dgigh'>
-
-			    	<label>Vendor Name</label>
-			    	<input type="text" name="">
-
-			    	<label>Created By:</label>
-			    	<input type="text" name="">
-
-			    	<div>
-					    <button id="prev">Previous</button>
-					    <button id="next">Next</button>
-					    &nbsp; &nbsp;
-					    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
-					    <canvas id="the-canvas"></canvas>
-					</div>
+				    <button id="prev">Previous</button>
+				    <button id="next">Next</button>
+				    &nbsp; &nbsp;
+				    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+				    <canvas id="the-canvas"></canvas>
 			    </div>
 			</div>
-			<input type="submit" class="fadeIn fourth" value="Submit"> 
+			<input type="submit" class="fadeIn fourth" value="Submit" id="submit-button-pos"> 
 			
 		</form>
 	</div>

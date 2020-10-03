@@ -22,10 +22,9 @@ class InvoiceListView(LoginRequiredMixin, ListView):
     def get_queryset(self, *args, **kwargs):
         queryset = super(InvoiceListView, self).get_queryset(
             *args, **kwargs)
-        NotifyToManagerForInvoice()
         userprofile = UserProfile.objects.filter(user=self.request.user)
         if not userprofile and userprofile.first().is_manager():
-            queryset = queryset.filter(created_by=self.request.user)
+            return queryset.filter(created_by=self.request.user)
 
         return queryset
 
@@ -40,3 +39,10 @@ class InvoiceCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
+
+
+class InvoiceDetailView(LoginRequiredMixin, DetailView):
+    model = Invoice
+    context_object_name = 'invoice'
+    template_name = 'invoice/invoice_detail.html'
+    pk_url_kwarg = 'invoice_id'

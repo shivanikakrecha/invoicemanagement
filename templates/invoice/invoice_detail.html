@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="invoice_create">
+		
+			<div class="row">
+			    <div class="col-6">		
+			    	<h3>Create Invoice</h3>	  	
+			  	    <label>Invoice Number</label>
+			  	    <input type="text" value="{{ invoice.invoice_number }}" required>
+			  	</div>
+			</div>
+			<div class='row'>
+			  	<div class="col-6">
+			  	    <label>created_by</label>
+			  	    <input type="text" value="{{ invoice.created_by.get_full_name }}" required>
+			    </div>
+			</div>
+			
+	</div>
+
+{% endblock %}

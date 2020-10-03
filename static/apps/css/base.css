@@ -166,6 +166,10 @@ input[type=text]:placeholder {
   }
 }
 
+#submit-button-pos{
+  position: absolute;
+}
+
 @keyframes fadeInDown {
   0% {
     opacity: 0;

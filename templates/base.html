@@ -20,7 +20,13 @@
     </head>
     <body>
         <div class="site-container">
-            {% block content %}{% endblock %}
+
+            {% if  user.is_authenticate %}
+                <div>dskjgoisdnj</div>
+            {% endif %}
+            {% block content %}
+
+            {% endblock %}
         </div>
     </body>
 </html>
