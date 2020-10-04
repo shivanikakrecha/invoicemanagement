@@ -155,9 +155,9 @@ CELERY_IMPORTS = (
     "invoice.tasks"
 )
 CELERYBEAT_SCHEDULE = {
-    # Executes every Monday morning at 7:30 A.M
-    "notifycfa-every-1-min": {
-        "task": "invoice.tasks.test",
+    # Executes every Day morning at 10 A.M
+    "notifyemail-every-day-10am-morning": {
+        "task": "invoice.tasks.NotifyToManagerForInvoice",
         "schedule": crontab(minute=0, hour='10'),
         "args": ()
     },

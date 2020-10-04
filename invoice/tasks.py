@@ -5,14 +5,7 @@ from accounts.models import UserProfile
 from django.db.models import Sum
 from invoice.utils import SendEmailToUsers
 
-
 @task()
-def test():
-    print("working")
-
-# @task()
-
-
 def NotifyToManagerForInvoice():
 
     managers = UserProfile.objects.filter(user_type='manager')
@@ -36,7 +29,6 @@ def NotifyToManagerForInvoice():
             total_amount += invoice.items.all().aggregate(Sum('price')
                                                           )['price__sum']
 
-            context_dict['pdf'] = invoice.attachment
-
         context_dict['total_amount'] = total_amount
+        context_dict['invoices'] = invoices
         SendEmailToUsers(context_dict, manager.user.email)

@@ -43,6 +43,6 @@ class Invoice(TimeStamps, models.Model):
     def __str__(self):
         return self.invoice_number
 
-    def save(self, **kwargs):
-        self.invoice_number = "IN-"+str(self.id)
-        super(Invoice, self).save()
+    # def save(self, **kwargs):
+    #     self.invoice_number = "IN-"+str(self.id)
+    #     super(Invoice, self).save()
