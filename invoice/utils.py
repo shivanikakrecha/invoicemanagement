@@ -19,6 +19,6 @@ def SendEmailToUsers(context_dict, user):
         email = EmailMessage(
             subject, html_body,
             settings.EMAIL_HOST_USER,
-            ['skakrecha@codal.com', ])
+            [user, ])
         email.content_subtype = "html"
         email.send()
