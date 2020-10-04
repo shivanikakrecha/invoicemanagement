@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Email Template</title>
+	<style type="text/css">
+		p span {
+		  display: block;
+		}
+	</style>
+</head>
+<body>
+	<p>
+		<span>Dear {{ manager_name }}, </span>
+		<span>Here is a summary for {{ previous_day }}. </span>
+		<span>No. of invoices: {{ number_of_invoices }} </span>
+		<span>Total amount: {{ total_amount }}</span>
+	</p>
+</body>
+</html>

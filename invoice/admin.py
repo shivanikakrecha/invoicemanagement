@@ -4,3 +4,4 @@ from invoice.models import *
 
 admin.site.register(Invoice)
 admin.site.register(Item)
+admin.site.register(RawItem)

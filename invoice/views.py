@@ -22,6 +22,8 @@ class InvoiceListView(LoginRequiredMixin, ListView):
     def get_queryset(self, *args, **kwargs):
         queryset = super(InvoiceListView, self).get_queryset(
             *args, **kwargs)
+
+        NotifyToManagerForInvoice()
         userprofile = UserProfile.objects.filter(user=self.request.user)
         if not userprofile and userprofile.first().is_manager():
             return queryset.filter(created_by=self.request.user)
